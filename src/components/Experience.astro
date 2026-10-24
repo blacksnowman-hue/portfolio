@@ -1,0 +1,27 @@
+---
+import "../styles/components/experience.css";
+import { experience } from "../data/content";
+---
+
+<section class="section experience" id="experience" aria-labelledby="experience-title">
+  <div class="wrap">
+    <p class="kicker">05 — Record</p>
+    <h2 id="experience-title" class="display" data-reveal>Experience</h2>
+    <p class="experience-intro">A short record of recent roles.</p>
+    <div class="timeline">
+      <span class="timeline-line" aria-hidden="true"></span>
+      <ol>
+        {
+          experience.map((job) => (
+            <li class="job" data-reveal>
+              <p class="job-dates">{job.dates}</p>
+              <h3 class="display">{job.role}</h3>
+              <p class="job-org">{job.org}</p>
+              <p>{job.summary}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

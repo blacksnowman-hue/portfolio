@@ -1,0 +1,76 @@
+---
+import "../styles/global.css";
+import Preloader from "../components/Preloader.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Harsh Thakur — Software Developer",
+  description = "Portfolio of Harsh Thakur, a software developer working on interactive web experiences.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="is-preloading">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#070707" />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style is:inline>
+      html.is-preloading {
+        overflow: hidden;
+      }
+      html.is-preloading .wordmark {
+        visibility: hidden;
+      }
+      #preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: #070707;
+      }
+    </style>
+  </head>
+  <body aria-busy="true">
+    <Preloader />
+    <slot />
+    <script>
+      import { initAnimations } from "../scripts/animations";
+      import { initNavigation } from "../scripts/navigation";
+      import { initPreloader } from "../scripts/preloader";
+
+      (async () => {
+        try {
+          await initPreloader();
+        } catch (error) {
+          console.error(error);
+        }
+
+        try {
+          const { initHeroScene } = await import("../scripts/scene");
+          initHeroScene();
+        } catch (error) {
+          console.error(error);
+        }
+
+        try {
+          initNavigation();
+        } catch (error) {
+          console.error(error);
+        }
+
+        try {
+          initAnimations();
+        } catch (error) {
+          console.error(error);
+        }
+      })();
+    </script>
+  </body>
+</html>

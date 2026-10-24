@@ -1,0 +1,142 @@
+.skills.section {
+  background: var(--paper);
+  color: var(--bg);
+  padding-inline: 0;
+  padding-top: 0;
+}
+
+.skills .kicker {
+  color: #3a3a3a;
+}
+
+.skills .wrap {
+  padding-inline: var(--pad-inline);
+}
+
+.skills h2 {
+  font-size: clamp(3.3rem, 8vw, 7rem);
+  max-width: 10ch;
+}
+
+.marquee {
+  overflow: hidden;
+  border-bottom: 1px solid currentColor;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  padding-block: 0.65rem;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 48s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.marquee-group span {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding-inline: 0.75rem;
+}
+
+.marquee-group i {
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem;
+  padding: 1rem 0;
+  border-top: 1px solid currentColor;
+}
+
+.skill-row:last-child {
+  border-bottom: 1px solid currentColor;
+}
+
+.skill-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.skill-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.skill-words span {
+  transition: opacity 0.2s linear;
+}
+
+@media (hover: hover) {
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .skill-words span:hover {
+    opacity: 0.45;
+  }
+}
+
+@media (max-width: 480px) {
+  .marquee-group span {
+    font-size: clamp(1.45rem, 5vw, 1.8rem);
+  }
+
+  .skill-words {
+    font-size: clamp(1.45rem, 5.5vw, 1.8rem);
+  }
+}
+
+@media (min-width: 720px) {
+  .skill-row {
+    grid-template-columns: 8.5rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 1.15rem 0;
+  }
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    padding-inline: var(--pad-inline);
+  }
+
+  .marquee-track {
+    width: auto;
+    flex-wrap: wrap;
+    animation: none;
+  }
+
+  .marquee-group + .marquee-group {
+    display: none;
+  }
+
+  .marquee-group {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}

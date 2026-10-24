@@ -1,0 +1,30 @@
+---
+import "../styles/components/education.css";
+import { education, images } from "../data/content";
+---
+
+<section class="section education" id="education" aria-labelledby="education-title">
+  <div class="wrap">
+    <p class="kicker">06 — Studies</p>
+    <h2 id="education-title" class="display" data-reveal>Education</h2>
+    <div class="edu-layout">
+      <p class="edu-year" data-reveal>{education.year}</p>
+      <div class="edu-copy" data-reveal>
+        <h3>{education.degree}</h3>
+        <p class="edu-school">{education.institution}</p>
+        <p class="hand edu-note">{education.note}</p>
+      </div>
+      <figure class="frame edu-figure" data-clip>
+        <img
+          src={images.education.src}
+          alt={images.education.alt}
+          width={images.education.width}
+          height={images.education.height}
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Desk</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>

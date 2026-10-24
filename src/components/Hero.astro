@@ -1,0 +1,57 @@
+---
+import "../styles/components/hero.css";
+import Marks from "./Marks.astro";
+import { images, site } from "../data/content";
+---
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <p class="spine">Portfolio — Issue 01</p>
+  <div class="hero-top hero-fade">
+    <p>{site.location}</p>
+    <p>Issue 01 — Web</p>
+  </div>
+  <div class="hero-stage">
+    <h1 id="hero-title">
+      <span class="hero-name">
+        <span class="hero-line"><span class="hero-line-inner">Harsh</span></span>
+        <span class="hero-line"><span class="hero-line-inner">Thakur</span></span>
+      </span>
+    </h1>
+    <div class="hero-lower">
+      <div class="hero-copy">
+        <p class="hero-role">
+          <span class="hero-line"><span class="hero-line-inner">Software</span></span>
+          <span class="hero-line"><span class="hero-line-inner">Developer</span></span>
+        </p>
+        <p class="hand hero-note hero-fade">
+          <Marks name="scribble" class="note-scribble" />
+          builds things for the web
+        </p>
+        <div class="hero-actions hero-fade">
+          <a class="btn btn-solid" href="#projects">See the work</a>
+          <a class="btn" href="#contact">Contact</a>
+          <Marks name="arrow" class="cta-arrow" />
+        </div>
+      </div>
+      <div class="hero-visual">
+        <figure class="frame hero-frame">
+          <img
+            src={images.hero.src}
+            alt={images.hero.alt}
+            width={images.hero.width}
+            height={images.hero.height}
+            fetchpriority="high"
+            decoding="async"
+          />
+          <figcaption>Field note / 01</figcaption>
+        </figure>
+        <Marks name="star" class="hero-star" />
+        <div id="three-canvas-mount" aria-hidden="true"></div>
+      </div>
+    </div>
+    <a class="scroll-cue hero-fade" href="#about">
+      Scroll
+      <span class="scroll-line" aria-hidden="true"></span>
+    </a>
+  </div>
+</section>

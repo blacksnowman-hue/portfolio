@@ -1,0 +1,85 @@
+.experience h2 {
+  font-size: clamp(3.3rem, 8vw, 7rem);
+  margin-bottom: 0.8rem;
+}
+
+.experience-intro {
+  max-width: 28rem;
+  color: var(--muted);
+  margin-bottom: clamp(2rem, 5vw, 3.2rem);
+}
+
+.timeline {
+  position: relative;
+  margin-left: 0.35rem;
+  padding-left: 1.6rem;
+}
+
+.timeline ol {
+  display: grid;
+  gap: clamp(2.2rem, 5vw, 3.6rem);
+}
+
+.timeline-line {
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  width: 1px;
+  background: rgba(232, 228, 220, 0.4);
+  transform-origin: top center;
+}
+
+.job {
+  position: relative;
+}
+
+.job::before {
+  content: "";
+  position: absolute;
+  left: -1.6rem;
+  top: 0.35rem;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  transform: translateX(-4px) rotate(45deg);
+}
+
+.job-dates {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.job h3 {
+  margin: 0.35rem 0 0.15rem;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+}
+
+.job-org {
+  font-family: var(--hand);
+  font-size: 1.7rem;
+  margin-bottom: 0.55rem;
+}
+
+.job p:last-child {
+  max-width: 36rem;
+}
+
+@media (max-width: 480px) {
+  .timeline {
+    margin-left: 0.15rem;
+    padding-left: 1.35rem;
+  }
+
+  .job::before {
+    left: -1.35rem;
+  }
+
+  .job-org {
+    font-size: 1.45rem;
+  }
+}

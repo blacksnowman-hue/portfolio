@@ -1,0 +1,45 @@
+---
+import "../styles/components/skills.css";
+import { skillGroups } from "../data/content";
+
+const ticker = skillGroups.flatMap((group) => group.items);
+---
+
+<section class="section skills" id="skills" aria-labelledby="skills-title">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      {
+        [0, 1].map(() => (
+          <div class="marquee-group">
+            {ticker.map((item) => (
+              <span>
+                {item}
+                <i>+</i>
+              </span>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="kicker">03 — Tools</p>
+    <h2 id="skills-title" class="display" data-reveal>What I work with</h2>
+    <ul class="skill-board">
+      {
+        skillGroups.map((group, index) => (
+          <li class="skill-row" data-reveal>
+            <p class="skill-label">
+              0{index + 1} / {group.label}
+            </p>
+            <p class="skill-words">
+              {group.items.map((item) => (
+                <span>{item}</span>
+              ))}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

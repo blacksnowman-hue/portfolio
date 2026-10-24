@@ -1,0 +1,71 @@
+.about-grid {
+  display: grid;
+  gap: 1.6rem;
+  position: relative;
+}
+
+.about h2 {
+  font-size: clamp(3.3rem, 8vw, 7rem);
+  max-width: 8ch;
+}
+
+.about-note-wrap {
+  margin-top: 1.2rem;
+}
+
+.about-note {
+  display: inline-block;
+  transform: rotate(-6deg);
+  transform-origin: left center;
+  color: var(--paper);
+}
+
+.about-figure {
+  margin: 0;
+}
+
+.about-figure img {
+  aspect-ratio: 4 / 5;
+  object-position: 62% 42%;
+}
+
+.about-doodle {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .about-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-note {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    column-gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+  }
+
+  .about-copy {
+    grid-column: 1;
+  }
+
+  .about-figure {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .about-doodle {
+    display: block;
+    position: absolute;
+    left: 46%;
+    top: 0.4rem;
+    width: 2.7rem;
+    color: rgba(232, 228, 220, 0.72);
+  }
+}

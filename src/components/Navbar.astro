@@ -1,0 +1,53 @@
+---
+import "../styles/components/navbar.css";
+import { nav, site } from "../data/content";
+---
+
+<header class="site-header">
+  <a class="skip" href="#content">Skip to content</a>
+  <div class="nav-bar">
+    <a class="wordmark" id="site-wordmark" href="#top" aria-label={`${site.name}, home`}>
+      <span class="wordmark-mark" id="site-wordmark-mark" aria-hidden="true">HT</span>
+      <span class="wordmark-name">{site.name}</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} data-nav>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="nav-end">
+      <p class="availability" aria-label={site.availability}>
+        <span class="availability-dot" aria-hidden="true"></span>
+        <span class="availability-label">{site.availability}</span>
+      </p>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-toggle-label">Menu</span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <nav aria-label="Mobile">
+      <ul>
+        {
+          nav.map((item, index) => (
+            <li>
+              <a href={item.href} data-nav>
+                <span class="menu-index">0{index + 1}</span>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <p class="mobile-note">{site.location}</p>
+  </div>
+</header>

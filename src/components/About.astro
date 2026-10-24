@@ -1,0 +1,35 @@
+---
+import "../styles/components/about.css";
+import Marks from "./Marks.astro";
+import { about, images } from "../data/content";
+---
+
+<section class="section about" id="about" aria-labelledby="about-title">
+  <div class="wrap about-grid">
+    <div>
+      <p class="kicker">{about.kicker}</p>
+      <h2 id="about-title" class="display" data-reveal>{about.heading}</h2>
+      <div class="about-note-wrap" data-parallax="-16">
+        <p class="hand about-note">{about.note}</p>
+      </div>
+    </div>
+    <div class="about-copy" data-reveal>
+      <p class="prose lede">{about.lede}</p>
+      <p class="prose">{about.body}</p>
+    </div>
+    <figure class="frame about-figure" data-clip>
+      <img
+        src={images.about.src}
+        alt={images.about.alt}
+        width={images.about.width}
+        height={images.about.height}
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>Workspace</figcaption>
+    </figure>
+    <div class="about-doodle" data-parallax="20">
+      <Marks name="circle" />
+    </div>
+  </div>
+</section>

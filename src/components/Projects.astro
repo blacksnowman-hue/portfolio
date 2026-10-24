@@ -1,0 +1,108 @@
+---
+import "../styles/components/projects.css";
+import { projects } from "../data/content";
+
+const external = (href: string) => /^https?:\/\//.test(href);
+---
+
+<section class="section projects" id="projects" aria-labelledby="projects-title">
+  <div class="wrap">
+    <p class="kicker">04 — Work</p>
+    <h2 id="projects-title" class="display" data-reveal>Selected work</h2>
+    <div class="project-list">
+      {
+        projects.map((project, index) => (
+          <article class:list={["project", index % 2 === 1 && "project--flip"]}>
+            <div class="project-copy">
+              <p class="project-index" data-reveal>
+                {project.index}
+              </p>
+              <h3 class="display" data-reveal>
+                {project.title}
+              </h3>
+              <p class="prose" data-reveal>
+                {project.description}
+              </p>
+              <ul class="tech">
+                {project.tech.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <div class="project-links">
+                {project.links.map((link) =>
+                  link.href ? (
+                    <a
+                      href={link.href}
+                      {...(external(link.href)
+                        ? { target: "_blank", rel: "noreferrer noopener" }
+                        : {})}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <span class="is-placeholder">Add {link.label} URL</span>
+                  ),
+                )}
+              </div>
+            </div>
+            <div class={`preview preview-${project.preview}`} data-clip aria-hidden="true">
+              <div class="chrome">
+                <i></i><i></i><i></i>
+                <span>{project.title}</span>
+              </div>
+              <div class="screen">
+                {project.preview === "qkart" && (
+                  <>
+                    <div class="qk-grid">
+                      <div><b>01</b><span>Item</span></div>
+                      <div><b>02</b><span>Item</span></div>
+                      <div><b>03</b><span>Item</span></div>
+                      <div><b>04</b><span>Item</span></div>
+                    </div>
+                    <p class="qk-cart">Cart · checkout</p>
+                  </>
+                )}
+                {project.preview === "autonomize" && (
+                  <>
+                    <div class="gh-head">
+                      <span class="avatar"></span>
+                      <div>
+                        <strong>Profile</strong>
+                        <small>followers · following</small>
+                      </div>
+                    </div>
+                    <ul class="gh-list">
+                      <li>User profile</li>
+                      <li>Followers</li>
+                      <li>Related info</li>
+                    </ul>
+                  </>
+                )}
+                {project.preview === "koinx" && (
+                  <>
+                    <table class="ledger">
+                      <tbody>
+                        <tr><td>Row</td><td>Trade CSV</td><td>···</td></tr>
+                        <tr><td>Row</td><td>Trade CSV</td><td>···</td></tr>
+                        <tr><td>Row</td><td>Trade CSV</td><td>···</td></tr>
+                      </tbody>
+                    </table>
+                    <p class="balance"><span>Balance at timestamp</span>—</p>
+                  </>
+                )}
+                {project.preview === "quests" && (
+                  <ul class="quest-list">
+                    <li><span></span>Quest</li>
+                    <li><span></span>Verify</li>
+                    <li><span></span>Platform</li>
+                    <li><span></span>Session</li>
+                  </ul>
+                )}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

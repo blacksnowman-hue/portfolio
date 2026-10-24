@@ -1,0 +1,13 @@
+---
+import "../styles/components/footer.css";
+import { site } from "../data/content";
+---
+
+<footer class="site-footer">
+  <div class="footer-row">
+    <p>{site.name}</p>
+    <p>© {site.year}</p>
+    {site.resumeHref && <a href={site.resumeHref}>Resume</a>}
+    <a href="#top">Back to top</a>
+  </div>
+</footer>

@@ -1,0 +1,92 @@
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  pointer-events: none;
+}
+
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  .preloader-inner {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .preloader-mark {
+    width: clamp(3.75rem, 22vw, 5rem);
+    height: clamp(3.75rem, 22vw, 5rem);
+    font-size: clamp(2rem, 10vw, 2.6rem);
+  }
+}
+
+.preloader-kicker {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.preloader-mark {
+  width: clamp(4.5rem, 18vw, 7rem);
+  height: clamp(4.5rem, 18vw, 7rem);
+  font-size: clamp(2.4rem, 9vw, 3.8rem);
+}
+
+.preloader-bar {
+  width: min(14rem, 70vw);
+  height: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.preloader-bar-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--ink);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.preloader-progress {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+#preloader-flyer {
+  position: fixed;
+  z-index: 201;
+  margin: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+#preloader-flyer.is-active {
+  visibility: visible;
+}
+
+html.is-preloading {
+  overflow: hidden;
+}
+
+html.is-preloading .wordmark {
+  visibility: hidden;
+}

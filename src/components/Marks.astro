@@ -1,0 +1,44 @@
+---
+interface Props {
+  name: "star" | "arrow" | "cross" | "circle" | "scribble";
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+---
+
+{
+  name === "star" && (
+    <svg class:list={["mark", className]} viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M32 6 36.5 24 55 19.5 41 32.5 56 46 36 40.5 32 58 27.5 40 8 45.5 23 32 9 20.5 27 24.5Z" />
+    </svg>
+  )
+}
+{
+  name === "arrow" && (
+    <svg class:list={["mark", className]} viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M6 34c14-2 24-1 40 1M38 16l18 18L37 50" />
+    </svg>
+  )
+}
+{
+  name === "cross" && (
+    <svg class:list={["mark", className]} viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M14 12 50 52M52 14 12 50" />
+    </svg>
+  )
+}
+{
+  name === "circle" && (
+    <svg class:list={["mark", className]} viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M34 7c13 1 22 12 21 25-1 14-13 24-27 23C14 54 6 42 7 27 8 12 20 6 34 7Z" />
+    </svg>
+  )
+}
+{
+  name === "scribble" && (
+    <svg class:list={["mark", className]} viewBox="0 0 80 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M2 20c8-10 12 8 20 0s12 8 20-1 14-8 22 2 10-4 14 1" />
+    </svg>
+  )
+}

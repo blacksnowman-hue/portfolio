@@ -143,6 +143,7 @@ export const contact = {
   headingLead: "Let's build",
   headingTail: "something.",
   email: null as string | null,
+  instagram: null as string | null,
   github: null as string | null,
   linkedin: null as string | null,
 };

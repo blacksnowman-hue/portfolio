@@ -4,7 +4,6 @@
 }
 
 .experience-intro {
-  max-width: 28rem;
   color: var(--muted);
   margin-bottom: clamp(2rem, 5vw, 3.2rem);
 }
@@ -63,10 +62,6 @@
   font-family: var(--hand);
   font-size: 1.7rem;
   margin-bottom: 0.55rem;
-}
-
-.job p:last-child {
-  max-width: 36rem;
 }
 
 @media (max-width: 480px) {

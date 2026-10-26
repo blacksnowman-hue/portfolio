@@ -184,8 +184,8 @@ section[tabindex="-1"]:focus {
 }
 
 .wrap {
-  width: min(1180px, 100%);
-  margin-inline: auto;
+  width: 100%;
+  margin-inline: 0;
 }
 
 .kicker {
@@ -215,7 +215,7 @@ section[tabindex="-1"]:focus {
 }
 
 .prose {
-  max-width: 38rem;
+  max-width: none;
 }
 
 .prose + .prose {
@@ -328,6 +328,12 @@ section[tabindex="-1"]:focus {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+@media (min-width: 900px) {
+  :root {
+    --pad-inline: clamp(3.2rem, 5vw, 5rem);
+  }
 }
 
 @media (max-width: 480px) {

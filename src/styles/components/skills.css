@@ -1,16 +1,12 @@
 .skills.section {
   background: var(--paper);
   color: var(--bg);
-  padding-inline: 0;
+  padding-inline: var(--pad-inline);
   padding-top: 0;
 }
 
 .skills .kicker {
   color: #3a3a3a;
-}
-
-.skills .wrap {
-  padding-inline: var(--pad-inline);
 }
 
 .skills h2 {

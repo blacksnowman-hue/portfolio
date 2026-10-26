@@ -244,7 +244,7 @@
   .spine {
     display: block;
     position: absolute;
-    left: 1rem;
+    left: var(--pad-inline);
     top: calc(var(--header) + 4.5rem);
     bottom: 5.5rem;
     writing-mode: vertical-rl;
@@ -254,10 +254,6 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--muted);
-  }
-
-  .hero {
-    padding-left: clamp(3.2rem, 5vw, 5rem);
   }
 
   .hero-lower {

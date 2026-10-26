@@ -1,13 +1,85 @@
 ---
 import "../styles/components/footer.css";
-import { site } from "../data/content";
+import { contact } from "../data/content";
+
+const external = (href: string) => /^https?:\/\//.test(href);
+
+const socialItems = [
+  {
+    label: "Instagram",
+    href: contact.instagram,
+    empty: "Add Instagram URL",
+  },
+  {
+    label: "LinkedIn",
+    href: contact.linkedin,
+    empty: "Add LinkedIn URL",
+  },
+  {
+    label: "GitHub",
+    href: contact.github,
+    empty: "Add GitHub URL",
+  },
+  {
+    label: "Mail",
+    href: contact.email ? `mailto:${contact.email}` : null,
+    empty: "Add your email",
+  },
+];
 ---
 
-<footer class="site-footer">
-  <div class="footer-row">
-    <p>{site.name}</p>
-    <p>© {site.year}</p>
-    {site.resumeHref && <a href={site.resumeHref}>Resume</a>}
-    <a href="#top">Back to top</a>
+<footer class="site-footer" id="contact" aria-label="Contact and links">
+  <div class="footer-stage">
+    <div class="footer-wordmark-wrap">
+      <p class="footer-wordmark" aria-hidden="true">HARSH</p>
+    </div>
+    <nav class="footer-social" aria-label="Social links">
+      {
+        socialItems.map((item) =>
+          item.href ? (
+            <a
+              class="footer-social__link"
+              href={item.href}
+              {...(external(item.href) ? { target: "_blank", rel: "noreferrer noopener" } : {})}
+            >
+              <span class="footer-social__label">{item.label}</span>
+            </a>
+          ) : (
+            <span class="footer-social__item is-placeholder">
+              <span class="footer-social__label">{item.label}</span>
+              <span class="footer-social__hint">{item.empty}</span>
+            </span>
+          )
+        )
+      }
+    </nav>
   </div>
 </footer>
+
+<script>
+  const fitFooterWordmark = () => {
+    const wrap = document.querySelector<HTMLElement>(".footer-wordmark-wrap");
+    const wordmark = document.querySelector<HTMLElement>(".footer-wordmark");
+    if (!wrap || !wordmark) return;
+
+    wordmark.style.transform = "none";
+    const target = wrap.clientWidth;
+    const natural = wordmark.scrollWidth;
+    if (!target || !natural) return;
+
+    const scale = Math.min(target / natural, 1.75);
+    wordmark.style.transform = `scaleX(${scale})`;
+    wordmark.style.transformOrigin = "left bottom";
+  };
+
+  const scheduleFit = () => requestAnimationFrame(fitFooterWordmark);
+
+  scheduleFit();
+  window.addEventListener("resize", scheduleFit, { passive: true });
+  document.fonts?.ready.then(scheduleFit);
+
+  if (typeof ResizeObserver !== "undefined") {
+    const wrap = document.querySelector(".footer-wordmark-wrap");
+    if (wrap) new ResizeObserver(scheduleFit).observe(wrap);
+  }
+</script>
